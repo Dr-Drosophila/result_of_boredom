@@ -86,3 +86,5 @@ with open( output_file, "w" ) as out_file:
 	for key, val in num_dict.items():
 		print( "{0}: {1}".format( key, val ), file=out_file )
 	print( file=out_file )
+	for item in output_lst:
+		print( item, file=out_file )
