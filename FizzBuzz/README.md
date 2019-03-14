@@ -1,6 +1,5 @@
 # FizzBuzz
 A kid's game
----
 
 ### Rules
 
