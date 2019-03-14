@@ -88,27 +88,7 @@ if random_character == 0:
 	print( random_character )
 
 # creating same game
-sample_game = []
-stopping_condition = False # creating stopping condition
-start_char = None
-while stopping_condition == False:
-	if len( sample_game ) == 0:
-		to_add = random.choice( word_dictionary[random_character] )
-		word_dictionary[random_character].remove( to_add )
-		start_char = to_add[-1]
-		sample_game.append( to_add.title() )
-		print(sample_game)
-		print(start_char)
-	elif len( sample_game ) != 0:
-		if len( word_dictionary[random_character] ) != 0:
-			to_add = random.choice(word_dictionary[random_character])
-			word_dictionary[random_character].remove( to_add )
-			start_char = to_add[-1]
-			sample_game.append( to_add.title() )
-			print(sample_game)
-			print(start_char)
-		elif len( word_dictionary[random_character] ) == 0:
-			sample_game.append( "END" )
-			stopping_condition = True
+sample_game = [] # add first item directly, and then add to it with a loop
+
 
 print(sample_game)
