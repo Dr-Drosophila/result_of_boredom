@@ -59,12 +59,25 @@ if __name__ == "__main__":
 # first, convert the input file to a list
 # convert the list to a dictionary of first letters
 
+upper_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+specials = "&- "
+
 # list of items to play with
 words = []
 # read in all the words to the list
 with open( type_of_game, "r" ) as in_file:
 	for line in in_file:
 		word = line.strip().upper()
+		temp_word = None
+		for char in word:
+			if char not in upper_letters and char not in specials:
+				temp_word = word
+		if temp_word != None:
+			for i in range( len(temp_word) ):
+				if temp_word[i] not in upper_letters and char not in specials:
+					word = temp_word[:i]
+					break
+			# print( word )
 		words.append( word )
 
 # create dictinary based on starting letter automaticcally
@@ -74,8 +87,6 @@ for word in words:
 		word_dictionary[ word[0] ] = [ word ]
 	elif word[0] in word_dictionary.keys():
 		word_dictionary[ word[0] ].append(word)
-
-upper_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 # account for any items that might not be in the dictionary.
 for item in upper_letters:
@@ -88,7 +99,21 @@ if random_character == 0:
 	print( random_character )
 
 # creating same game
-sample_game = [] # add first item directly, and then add to it with a loop
+sample_game_lst = [] # add first item directly, and then add to it with a loop
+to_add = random.choice( word_dictionary[random_character] )
+word_dictionary[random_character].remove( to_add )
+sample_game_lst.append( to_add.title() )
+random_character = to_add[-1]
 
+while len( word_dictionary[random_character] ) != 0:
+	to_add = random.choice( word_dictionary[random_character] )
+	word_dictionary[random_character].remove( to_add )
+	sample_game_lst.append( to_add.title() )
+	random_character = to_add[-1]
 
-print(sample_game)
+[ print( item ) for item in sample_game_lst ]
+
+with open( sample_game, "w" ) as out_file:
+	for item in sample_game_lst:
+		print( item, file=out_file )
+	print( "END", file=out_file )
