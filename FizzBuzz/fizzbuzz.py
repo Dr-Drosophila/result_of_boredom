@@ -70,21 +70,30 @@ print( num_dict )
 
 output_lst = []
 
-# for loop to create the output:
-for i in range( 1, total_length_of_game+1 ):
-	thing = ""
-	for item in list( num_dict.keys() ):
-		if i % item == 0:
-			thing += num_dict[item]
-	if thing == "":
-		thing = str(i)
-	output_lst.append( thing )
+## for loop to create the output:
+# for i in range( 1, total_length_of_game+1 ):
+# 	thing = ""
+# 	for item in list( num_dict.keys() ):
+# 		if i % item == 0:
+# 			thing += num_dict[item]
+# 	if thing == "":
+# 		thing = str(i)
+# 	output_lst.append( thing )
 
-print( output_lst )
+# print( output_lst )
 
 with open( output_file, "w" ) as out_file:
 	for key, val in num_dict.items():
 		print( "{0}: {1}".format( key, val ), file=out_file )
+	print( "len(game) = " + str(total_length_of_game), file=out_file )
 	print( file=out_file )
+	for i in range( 1, total_length_of_game+1 ):
+		thing = ""
+		for item in list( num_dict.keys() ):
+			if i % item == 0:
+				thing += num_dict[item]
+		if thing == "":
+			thing = str(i)
+		print( thing, file=out_file )
 	for item in output_lst:
 		print( item, file=out_file )
