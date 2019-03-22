@@ -35,15 +35,35 @@ def log_print( pen_log ):
 	with open( pen_log, "r" ) as in_file:
 		for line in in_file:
 			line = line.strip().split("\t")
-			print( "{0:>26}\t{1:<36}{2:<36}{3:<15}".format( line[0], line[1], line[2], line[3] ) )
+			print( "{0:>19}\t{1:<36}{2:<36}{3:<15}".format( line[0], line[1], line[2], line[3] ) )
 	print(  )
+
+# checks notes for selected pen
+def check_notes( pen_log ):
+	pens_dict = {}
+	i = 1
+	with open( pen_log, "r" ) as in_file:
+		for line in in_file:
+			line = line.strip().split("\t")
+			temp = line[0][:10] + " == " + line[1] + " == " + line[2]
+			pens_dict[i] = [ temp, line[4] ]
+			i += 1
+	print(  )
+	for key, val in pens_dict.items():
+		print( key, "\t", val[0] )
+	number = int( input( "Which pen do you want information about? " ) )
+	print()
+	print( pens_dict[ number ][0] )
+	print( "\t" + pens_dict[ number ][1] )
+	print()
+
 
 ## get information from bash
 if __name__ == "__main__":
 	# print( "from main" )
-	string = "python3 game.py \n\t-i <input_log> \n\t-c (<check_log>)\n\t"
+	string = "python3 game.py \n\t-i <input_log> \n\t-c (<check_log>)\n\t\n\t-n (check notes for pen in index)"
 	try:
-		opts, args = getopt.getopt( sys.argv[1:],"hi:c",["help", "input_log=", "check_log"] )
+		opts, args = getopt.getopt( sys.argv[1:],"hi:cn",["help", "input_log=", "check_log", "notes_check"] )
 	except getopt.GetoptError:
 		print( string )
 		sys.exit(2)
@@ -56,6 +76,9 @@ if __name__ == "__main__":
 		elif opt == "-c":
 			log_print( input_log )
 			sys.exit(0)
+		elif opt == "-n":
+			check_notes( input_log )
+			sys.exit(0)
 
 	print( 'input_log is:\t', input_log )
 	print(  )
@@ -64,22 +87,42 @@ if __name__ == "__main__":
 ========= CODE ====================================================================
 """
 
-date_time = str( datetime.datetime.now() )
+date_time = str( datetime.datetime.now() )[:19]
 pen = input( "Brand/Model of Pen (Nib):\t" ).title()
 ink = input( "Ink:\t\t\t\t" ).title()
 test_use = input( "Testing or Using?\t\t" ).title()
+notes = input( "Notes: " ).capitalize()
+if notes == "":
+	notes = "N/A"
+
+# list of things that need proper capitalizations
+cap_list = {
+	"Fpr"	: "FPR",
+	"Vp"	: "VP",
+	"Rk"	: "R&K",
+
+	"Na"	: "N/A"
+}
+
+# checking if i need to change something in the name.
+for key, val in cap_list.items() :
+	if key in pen:
+		pen = pen.replace( key, val )
+	if key in ink:
+		ink = ink.replace( key, val )
 
 pen_info = [
 	date_time,
 	pen,
 	ink,
-	test_use
+	test_use,
+	notes
 ]
 
-print( log_print(input_log) )
+# print( log_print(input_log) )
 
 with open( input_log, "a" ) as out_file:
-	print( "{0:>26}\t{1:<36}{2:<36}{3:<15}".format( pen_info[0], pen_info[1], pen_info[2], pen_info[3] ) )
-	print( "\t".join( pen_info ), file=out_file )
+	print( "{0:>19}\t{1:<36}{2:<36}{3:<15}\n\t{4}".format( pen_info[0], pen_info[1], pen_info[2], pen_info[3], pen_info[4] ) )
+# 	print( "\t".join( pen_info ), file=out_file )
 
-print( "\n\tAdded information.\n" )
+# print( "\n\tAdded information.\n" )
