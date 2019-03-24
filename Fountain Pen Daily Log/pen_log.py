@@ -100,6 +100,7 @@ cap_list = {
 	"Fpr"	: "FPR",
 	"Vp"	: "VP",
 	"Rk"	: "R&K",
+	"Sb"	: "SB",
 
 	"Na"	: "N/A"
 }
@@ -122,7 +123,7 @@ pen_info = [
 # print( log_print(input_log) )
 
 with open( input_log, "a" ) as out_file:
+	print(  )
 	print( "{0:>19}\t{1:<36}{2:<36}{3:<15}\n\t{4}".format( pen_info[0], pen_info[1], pen_info[2], pen_info[3], pen_info[4] ) )
-# 	print( "\t".join( pen_info ), file=out_file )
-
-# print( "\n\tAdded information.\n" )
+	print( "\t".join( pen_info ), file=out_file )
+	print( "\n\tAdded information.\n" )
