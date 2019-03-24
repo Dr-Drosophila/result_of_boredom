@@ -97,3 +97,4 @@ with open( output_file, "w" ) as out_file:
 		print( thing, file=out_file )
 	for item in output_lst:
 		print( item, file=out_file )
+	print( file=out_file )
