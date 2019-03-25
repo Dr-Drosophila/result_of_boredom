@@ -30,8 +30,8 @@ import datetime
 # print the log of pens
 def log_print( pen_log ):
 	print(  )
-	print( "{0:>26}\t{1:<36}{2:<36}{3:<15}".format("Date/Time", "Pen", "Ink", "Test/Use" ) )
-	print( "-"*120 )
+	print( "{0:>19}\t{1:<36}{2:<36}{3:<15}".format("Date/Time", "Pen", "Ink", "Test/Use" ) )
+	print( "-"*108 )
 	with open( pen_log, "r" ) as in_file:
 		for line in in_file:
 			line = line.strip().split("\t")
@@ -87,22 +87,26 @@ if __name__ == "__main__":
 ========= CODE ====================================================================
 """
 
+# requestiung user data
 date_time = str( datetime.datetime.now() )[:19]
 pen = input( "Brand/Model of Pen (Nib):\t" ).title()
 ink = input( "Ink:\t\t\t\t" ).title()
 test_use = input( "Testing or Using?\t\t" ).title()
 notes = input( "Notes: " ).capitalize()
+
+# if no notes, then notes = "N/A" to maintain tabs in file
 if notes == "":
 	notes = "N/A"
 
 # list of things that need proper capitalizations
 cap_list = {
-	"Fpr"	: "FPR",
-	"Vp"	: "VP",
-	"Rk"	: "R&K",
-	"Sb"	: "SB",
+	"Fpr"	: "FPR", 	# Fountain Pen Revolution
+	"Vp"	: "VP",		# Vanishing Point (Pilot)
+	"Rk"	: "R&K",	# Rohrer und Klingner
+	"Sb"	: "SB",		# Soft Broad (nib designation)
+	"Uef"	: "UEF",	# Ultra Extra Fine (nib designation)
 
-	"Na"	: "N/A"
+	"Na"	: "N/A"		# Not Applicable
 }
 
 # checking if i need to change something in the name.
@@ -122,8 +126,13 @@ pen_info = [
 
 # print( log_print(input_log) )
 
+# writing to the output file
 with open( input_log, "a" ) as out_file:
 	print(  )
-	print( "{0:>19}\t{1:<36}{2:<36}{3:<15}\n\t{4}".format( pen_info[0], pen_info[1], pen_info[2], pen_info[3], pen_info[4] ) )
+	print( "-"*108 )
+	print( "-"*108 )
+	print(  )
+	print( "{0:>19}\t{1:<36}{2:<36}{3:<15}\n".format( "Time", "Pen", "Ink", "Test/Use" ) )
+	print( "{0:>19}\t{1:<36}{2:<36}{3:<15}\nNotes: \t{4}".format( pen_info[0], pen_info[1], pen_info[2], pen_info[3], pen_info[4] ) )
 	print( "\t".join( pen_info ), file=out_file )
 	print( "\n\tAdded information.\n" )
