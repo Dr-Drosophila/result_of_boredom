@@ -22,7 +22,7 @@ Date:        2019/04/24
 Version:    0.0.1
 
 ascii_generator:
-    http://patorjk.com/software/taag/#p=display&h=0&v=2&f=Georgia11&t=
+    http://patorjk.com/software/taag/#p=display&h=0&v=3&c=bash&f=Georgia11&t=
 ========= IMPORTS =================================================================
 """
 
@@ -32,10 +32,10 @@ import sys
 ========= FUNCTIONS ===============================================================
 """
 
-def persistance( num, steps = 0 ):
+def m_persistance( num, steps = 0 ):
     if len( str(num) ) == 1:
         print( "total_steps:", steps )
-        sys.exit()
+        return( steps )
 
 
     steps += 1
@@ -45,12 +45,29 @@ def persistance( num, steps = 0 ):
     for i in digits:
         result *= i
 
-    print( "{:>3}: {}".format(steps, result) )
-    persistance( result, steps )
+    print( "{0:>3}: {1}".format(steps, result) )
+    m_persistance( result, steps )
+
+def a_persistance( num, steps = 0 ):
+    if len( str(num) ) == 1:
+        print( "total_steps:", steps )
+        return( steps )
+
+
+    steps += 1
+    digits = [ int(i) for i in str( num ) ]
+
+    result = 0
+    for i in digits:
+        result += i**2
+
+    print( "{0:>3}: {1}".format(steps, result) )
+    a_persistance( result, steps )
 
 
 """
 ========= CODE ====================================================================
 """
 
-persistance( int(input( "Input number: " )) )
+m_persistance( int(input( "Input number (mult): " )) )
+a_persistance( int(input( "Input number (add): " )) )
