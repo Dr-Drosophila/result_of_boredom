@@ -1,5 +1,4 @@
-"""
-========= FILE INFORMATION =========================================================
+"""========= FILE INFORMATION =========================================================
 File name:			fizzbuzz.py
 Run using:			python3 fizzbuzz.py -n <numbers> -l <total_length_of_game> -o <output_file>
 Input(s):			-n <numbers>
