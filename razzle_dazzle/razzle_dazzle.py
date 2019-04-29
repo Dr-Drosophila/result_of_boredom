@@ -35,6 +35,7 @@ from collections import Counter # counts thigns
 import time
 import sys                      # to import a file from the commmand line
 import getopt                   # TO PASS IN INPUT AND OUTPUT PARAMETERS
+from scipy.stats import lineregress
 
 #
 #      ,...                                           ,,
@@ -48,24 +49,30 @@ import getopt                   # TO PASS IN INPUT AND OUTPUT PARAMETERS
 #
 #
 
-if __name__ == "__main__":
-    string = "python3 razzle_dazzle.py \n\t-m <money_start>"
-    try:
-        opts, args = getopt.getopt( sys.argv[1:],"hm:",["money_start=",] )
-    except getopt.GetoptError:
-        print( string )
-        sys.exit(2)
-    for opt, arg in opts:
-        if opt == '-h':
-            print( string )
-            sys.exit()
-        elif opt in ("-m", "--money_start"):
-            money_start = int(arg)
+# if __name__ == "__main__":
+#     string = "python3 razzle_dazzle.py \n\t-m <money_start>"
+#     try:
+#         opts, args = getopt.getopt( sys.argv[1:],"hm:",["money_start=",] )
+#     except getopt.GetoptError:
+#         print( string )
+#         sys.exit(2)
+#     for opt, arg in opts:
+#         if opt == '-h':
+#             print( string )
+#             sys.exit()
+#         elif opt in ("-m", "--money_start"):
+#             money_start = int(arg)
+#
+#     print( 'money_start is:\t', money_start )
+#     print(  )
 
-    print( 'money_start is:\t', money_start )
-    print(  )
+a = list( range(10) )
+b = list( range( 0, 18, 2 ) )
+pprint(a)
+pprint(b)
+lineregress( a,b )
 
-# money_start = 0
+sys.exit()
 
 # rolling the die
 #     for razzle_dazzle, the number of iterations should be 8
