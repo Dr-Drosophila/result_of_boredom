@@ -3,3 +3,11 @@ Always need to add everytime you open the game.
 100% Catch Rate:
 catch_rate
 5224A75C 4A7E497D+1224A782 0000E005+1224A782 00002001+0224A784 38010400+D2000000 00000000
+
+All Pokemon in battle are shiny:
+battle_shiny
+12075E52 000046C0
+
+Acquire National Dex: Press L+R
+national_dex
+94000130 FCFF0000+B2101D40 00000000+20001657 00000001+D2000000 00000000
