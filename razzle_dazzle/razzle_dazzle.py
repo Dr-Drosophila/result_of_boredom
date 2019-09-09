@@ -162,8 +162,6 @@ price_per_game = 1
 
 num_game = 1
 
-
-
 # game; while you still have money
 while money_start >= 0:
     score = roll_die( 8 )
