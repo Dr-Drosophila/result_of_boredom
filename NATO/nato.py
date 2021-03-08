@@ -14,6 +14,7 @@ import datetime
 from pprint import pprint as pprint
 from os import system as bash
 import time
+from playsound import playsound
 
 #
 #      ,...                                           ,,
@@ -58,7 +59,7 @@ with open( "./data/conversion.db", "r" ) as infile:
 
 # string that needs to be changed
 # query = input("What is your query? \n")
-query = "This is a test?"
+query = "sos sos"
 
 # handling morse first
 temp_to_morse_str = "".join( query.upper().split() )
@@ -76,7 +77,7 @@ for item in morse_list:
             bash( "say 'dit'" )
 
         elif char == "-":
-            bash( "say 'do'" )
+            bash( "say 'dooo'" )
     time.sleep(0.3)
 
 print( to_morse_lst )

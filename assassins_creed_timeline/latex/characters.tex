@@ -1,0 +1,105 @@
+%=================================================================================
+%DOCUMENT HEADER
+\documentclass[12pt]{article}
+
+%=================================================================================
+%PACKAGES/PACKAGE SETTINGS
+%\usepackage{graphicx}
+%\usepackage[demo]{graphicx}
+\usepackage{subcaption}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{parskip}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+%\usepackage{lineno}
+%\linenumbers
+\setcounter{tocdepth}{4}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{epigraph}
+
+\usepackage{arabtex}
+\usepackage{utf8}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\leftmark}
+\fancyhead[R]{\textsc{Rele}, C}
+\fancyfoot[R]{\thepage\ of \pageref{LastPage}}
+\fancyhead[L]{\rightmark}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\usepackage{color,soul}
+
+\usepackage{listings}
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{framextopmargin=50pt,frame=bottomline}
+
+\usepackage[most]{tcolorbox}\tcbuselibrary{listings,breakable}
+
+\newtcolorbox{note}[1][]{%
+  enhanced jigsaw, % better frame drawing
+  borderline west={2pt}{0pt}{red}, % straight vertical line at the left edge
+  boxrule=0pt, % no real frame,
+%  fonttitle={\large\bfseries},
+  coltitle={white},  % Black colour for title
+  title={\textsc{Note}:\ },  % Fixed title
+%  attach title to upper, % Move the title into the box
+  #1
+}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{tgpagella}
+\usepackage{pifont}
+\usepackage{wasysym}
+
+%=================================================================================
+%NEW COMMANDS/SHORTCUTS
+
+
+%=================================================================================
+%TITLE PAGE
+\title{All Characters in Assassin's Creed Games}
+\author{\href{mailto:rele.chinmay@gmail.com}{Chinmay Rele}}
+\date{\today\ -- \currenttime \thanks{Last Edited}}
+
+\begin{document}
+\setcode{utf8}
+\maketitle
+\tableofcontents
+\listoffigures
+\listoftables
+\thispagestyle{empty}
+
+%=================================================================================
+%CHAPTERS
+
+%\include{}
+\section{Assassin's Creed (2007)}
+	\include{chapters/assassins/al_mualim}
+
+%=================================================================================
+%This document was created using \LaTeX\ and a custom template created by the author.
+
+
+\end{document}
